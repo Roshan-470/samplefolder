@@ -1,0 +1,230 @@
+/* Map container */
+
+.histora-map-shell {
+  height: 620px;
+  isolation: isolate;
+}
+
+.histora-leaflet-map {
+  height: 100%;
+  width: 100%;
+  background: #17171c;
+  z-index: 1;
+}
+
+/* Leaflet controls */
+
+.histora-leaflet-map .leaflet-control-zoom {
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
+.histora-leaflet-map .leaflet-control-zoom a {
+  width: 36px;
+  height: 36px;
+  line-height: 36px;
+  color: #e8bd73;
+  background: #19191f;
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.histora-leaflet-map .leaflet-control-zoom a:hover {
+  color: #101014;
+  background: #e8bd73;
+}
+
+.histora-leaflet-map .leaflet-control-attribution {
+  color: #9ca3af;
+  background: rgba(16, 16, 20, 0.85);
+  font-size: 10px;
+}
+
+.histora-leaflet-map .leaflet-control-attribution a {
+  color: #e8bd73;
+}
+
+/* Custom markers */
+
+.histora-marker-wrapper {
+  background: transparent;
+  border: none;
+}
+
+.histora-marker {
+  position: relative;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.histora-marker-dot {
+  position: relative;
+  z-index: 2;
+  width: 13px;
+  height: 13px;
+  border: 3px solid #101014;
+  border-radius: 50%;
+  background: #e8bd73;
+  box-shadow: 0 0 0 2px #e8bd73;
+  transition: transform 0.2s ease;
+}
+
+.histora-marker-pulse {
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  border: 1px solid rgba(232, 189, 115, 0.65);
+  border-radius: 50%;
+  animation: histora-pulse 2.2s infinite;
+}
+
+.histora-marker-active .histora-marker-dot {
+  transform: scale(1.35);
+  background: #fff1c8;
+  box-shadow:
+    0 0 0 3px #e8bd73,
+    0 0 20px rgba(232, 189, 115, 0.8);
+}
+
+.histora-marker-active .histora-marker-pulse {
+  animation-duration: 1.2s;
+}
+
+@keyframes histora-pulse {
+  0% {
+    transform: scale(0.6);
+    opacity: 0.9;
+  }
+
+  100% {
+    transform: scale(1.7);
+    opacity: 0;
+  }
+}
+
+/* Popup */
+
+.histora-leaflet-map .leaflet-popup-content-wrapper {
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid rgba(232, 189, 115, 0.25);
+  border-radius: 16px;
+  color: #f9fafb;
+  background: #19191f;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+}
+
+.histora-leaflet-map .leaflet-popup-content {
+  width: 280px !important;
+  margin: 0;
+}
+
+.histora-leaflet-map .leaflet-popup-tip {
+  background: #19191f;
+}
+
+.histora-leaflet-map .leaflet-popup-close-button {
+  top: 10px !important;
+  right: 10px !important;
+  color: #9ca3af !important;
+  font-size: 20px !important;
+}
+
+.histora-leaflet-map .leaflet-popup-close-button:hover {
+  color: #e8bd73 !important;
+}
+
+.histora-popup-content {
+  padding: 20px;
+}
+
+.histora-popup-category {
+  display: inline-block;
+  margin-bottom: 10px;
+  color: #e8bd73;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.histora-popup-content h3 {
+  margin: 0 20px 12px 0;
+  color: #ffffff;
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+.histora-popup-location,
+.histora-popup-period {
+  display: flex;
+  align-items: flex-start;
+  gap: 7px;
+  margin: 8px 0;
+  color: #a1a1aa;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.histora-popup-location svg,
+.histora-popup-period svg {
+  flex-shrink: 0;
+  color: #e8bd73;
+}
+
+.histora-popup-description {
+  margin: 13px 0;
+  color: #c4c4cc;
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.histora-popup-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 5px;
+  color: #e8bd73;
+  font-size: 12px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.histora-popup-link:hover {
+  color: #f5d69d;
+}
+
+.histora-popup-note {
+  display: inline-block;
+  margin-top: 5px;
+  color: #9ca3af;
+  font-size: 11px;
+}
+
+/* Mobile layout */
+
+@media (max-width: 640px) {
+  .histora-map-shell {
+    height: 460px;
+    border-radius: 14px;
+  }
+
+  .histora-leaflet-map .leaflet-popup-content {
+    width: 250px !important;
+  }
+
+  .histora-popup-content {
+    padding: 16px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .histora-marker-pulse {
+    animation: none;
+  }
+}
